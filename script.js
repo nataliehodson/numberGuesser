@@ -1,33 +1,79 @@
-const userGuess = document.querySelector('.guess');
-const winOrLose = document.querySelector('.winOrLose');
-const guessBut = document.querySelector('.guessBut')
 let currentGuess;
 let randomNum;
-let numGuesses;
+let numGuesses= 0;
+let guesses = [];
 
 
 function generateNum() {
   randomNum =  Math.floor(Math.random() * 100);
-  console.log(randomNum)
+  const userGuess = document.querySelector('.guess');
+  userGuess.focus();
+
 }
 
 
 function getGuess() {
-    currentGuess =  userGuess.value;
-    console.log(userGuess.value)
+    const userGuess = document.querySelector('.guess');
+    const guessContainer = document.querySelector('.guesses');
+    currentGuess =  Number(userGuess.value);
+    guesses.push(` ${currentGuess}`)
+    guessContainer.textContent = guesses;
     numGuesses++;
+
+    userGuess.value = '';
     checkGuess();
 }
 
 function checkGuess() {
-    console.log('hi')
-    console.log(randomNum)
+    const userGuess = document.querySelector('.guess');
+    const winOrLose = document.querySelector('.winOrLose');
+    const guessBut = document.querySelector('.guessBut');
 
-    if(currentGuess === randomNum){
-        winOrLose.textContent = `You win! It took you ${numGuesses}`
-    } else if (currentGuess > randomNum){
-        winOrLose.textContent = `Your guess was too big`;
+    if(numGuesses < 10){
+        if(currentGuess === randomNum){
+            if(numGuesses > 1){
+                winOrLose.textContent = `You win! It took you ${numGuesses} guesses.`
+            } else {
+                winOrLose.textContent = `You win! It took you ${numGuesses} guess.`
+            }
+            userGuess.disabled = true;
+            guessBut.disabled = true;
+            resetButton();
+        } else if (currentGuess > randomNum){
+            winOrLose.textContent = `Your guess was too big.`;
+            userGuess.focus();
+    
+        } else {
+            winOrLose.textContent = `Your guess was too small.`;
+            userGuess.focus();
+    
+        }
     } else {
-        winOrLose.textContent = `Your guess was too small`
+        winOrLose.textContent = `You lose!`;
+        userGuess.disabled = true;
+        guessBut.disabled = true;
+        resetButton()
     }
+
+}
+
+function resetButton() {
+    const resetBut = document.querySelector('.resetBut');
+    resetBut.style.display = 'block';
+}
+
+function resetGame() {
+    const guessContainer = document.querySelector('.guesses');
+    const winOrLose = document.querySelector('.winOrLose');
+    const userGuess = document.querySelector('.guess');
+    const guessBut = document.querySelector('.guessBut');
+
+    userGuess.focus();
+    winOrLose.textContent = ``;
+    randomNum =  Math.floor(Math.random() * 100);
+    guesses = [];
+    guessContainer.textContent = guesses;
+    numGuesses= 0;
+    userGuess.disabled = false;
+    guessBut.disabled = false;
 }
