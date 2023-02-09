@@ -1,3 +1,54 @@
+html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #225560;
+    color: white;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+h1 {
+    font-family: 'Unbounded', cursive;
+    font-size: 70px;
+    color: #F3F58F;
+    margin-bottom: 60px;
+    text-align: center;
+}
+
+p {
+    font-size: 35px;
+}
+
+p, h2 {
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+h2 {
+    font-size: 50px;
+}
+
+button, input {
+    border-radius: 4px;
+    font-size: 35px;
+}
+
+button {
+    background-color: #3F868D;
+    color: #F3F58F;
+    cursor: pointer;
+    border: 0;
+}
+
+.guessCont {
+    display: inline-block;
+}
+
 .resetBut {
     display: none;
 }

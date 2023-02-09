@@ -1,16 +1,25 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <title>Number guessing game</title>
         <script src="script.js"></script>
         <link rel="stylesheet" href="style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Unbounded&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap" rel="stylesheet">
     </head>
 
     <body onload="generateNum()">
-        <h1>Number guessing game</h1>
+        <h1>Guess the number!</h1>
+        <p>You have ten guesses to find the right number.</p>
         <p>Make a guess!</p>
-        <input class="guess">
-        <button class="guessBut" onclick="getGuess()">Guess</button>
-        <p class="winOrLose"></p>
+        <div class="guessCont">
+            <input class="guess">
+
+            <button class="guessBut" onclick="getGuess()">Guess</button>
+        </div>
+        <h2 class="winOrLose"></h2>
         <div>
             <p>Previous guesses: </p>
             <p class="guesses"></p>
