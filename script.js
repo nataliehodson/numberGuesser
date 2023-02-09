@@ -5,7 +5,7 @@ let guesses = [];
 
 //generate random number, called on load
 function generateNum() {
-    randomNum =  Math.floor(Math.random() * 100);
+    randomNum =  Math.floor(Math.random() * 100) +1;
     const userGuess = document.querySelector('.guess');
     userGuess.focus();
 }
