@@ -3,18 +3,21 @@ let randomNum;
 let numGuesses= 0;
 let guesses = [];
 
+const userGuess = document.querySelector('.guess');
+const guessContainer = document.querySelector('.guesses');
+const winOrLose = document.querySelector('.winOrLose');
+const guessBut = document.querySelector('.guessBut');
+const resetBut = document.querySelector('.resetBut');
+
 //generate random number, called on load
 function generateNum() {
     randomNum =  Math.floor(Math.random() * 100) +1;
-    const userGuess = document.querySelector('.guess');
     userGuess.focus();
 }
 
-//assign user's guess to array
+//push user's guess to array
 //show all guesses on screen
 function getGuess() {
-    const userGuess = document.querySelector('.guess');
-    const guessContainer = document.querySelector('.guesses');
     currentGuess = userGuess.value;
     if(!isNaN(currentGuess) && currentGuess <101){
         guesses.push(` ${currentGuess}`)
@@ -30,9 +33,6 @@ function getGuess() {
 //if the number of guesses exceeds 10 then player loses
 //win or lose -> call function which shows reset button
 function checkGuess() {
-    const userGuess = document.querySelector('.guess');
-    const winOrLose = document.querySelector('.winOrLose');
-    const guessBut = document.querySelector('.guessBut');
 
     if (isNaN(currentGuess) || currentGuess > 100) {
         winOrLose.textContent = `Please enter a number between 1 and 100.`
@@ -68,7 +68,6 @@ function checkGuess() {
 
 //show reset button
 function resetButton() {
-    const resetBut = document.querySelector('.resetBut');
     resetBut.style.display = 'block';
 }
 
@@ -76,14 +75,7 @@ function resetButton() {
 //a new number is generated
 //game starts again.
 function resetGame() {
-    const guessContainer = document.querySelector('.guesses');
-    const winOrLose = document.querySelector('.winOrLose');
-    const guessBut = document.querySelector('.guessBut');
-    const userGuess = document.querySelector('.guess')
-    const resetBut = document.querySelector('.resetBut');
-
     generateNum();
-
     winOrLose.textContent = ``;
     guesses = [];
     guessContainer.textContent = guesses;
@@ -91,5 +83,4 @@ function resetGame() {
     userGuess.disabled = false;
     guessBut.disabled = false;
     resetBut.style.display = 'none';
-
 }
