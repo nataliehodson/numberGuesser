@@ -85,5 +85,7 @@ function resetGame() {
     resetBut.style.display = 'none';
 }
 
+window.addEventListener('load', generateNum)
+
 guessBut.addEventListener('click', getGuess)
 resetBut.addEventListener('click', resetGame);
