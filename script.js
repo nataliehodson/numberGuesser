@@ -19,7 +19,7 @@ function generateNum() {
 //show all guesses on screen
 function getGuess() {
     currentGuess = userGuess.value;
-    if(!isNaN(currentGuess) && currentGuess <101){
+    if(!isNaN(currentGuess) && currentGuess <101 && currentGuess > 0){
         guesses.push(` ${currentGuess}`)
         guessContainer.textContent = guesses;
         numGuesses++;
@@ -34,7 +34,7 @@ function getGuess() {
 //win or lose -> call function which shows reset button
 function checkGuess() {
 
-    if (isNaN(currentGuess) || currentGuess > 100) {
+    if (isNaN(currentGuess) || currentGuess > 100 || currentGuess < 0) {
         winOrLose.textContent = `Please enter a number between 1 and 100.`
         userGuess.focus();
     } else {
