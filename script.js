@@ -27,13 +27,15 @@ function checkGuess() {
     }
     userGuess.value = '';
 
-    //compare user's guess to generated number
-    //show on screen whether it was too big, too small, or correct
-    //if the number of guesses exceeds 10 then player loses
-    //win or lose -> call function which shows reset button
-    if (isNaN(currentGuess) || currentGuess > 100 || currentGuess < 0) {
+    //if numcer is NaN, or bigger than 100 or smaller than 1, 
+    //ask to submit nbr within correct limits
+    if (isNaN(currentGuess) || currentGuess > 100 || currentGuess < 1) {
         winOrLose.textContent = `Please enter a number between 1 and 100.`
         userGuess.focus();
+
+    //compare user's guess to generated number
+    //show on screen whether it was too big, too small, or correct
+    //win or lose -> call function which shows reset button
     } else {
         if(numGuesses < 11){
             if(currentGuess == randomNum){
@@ -54,6 +56,7 @@ function checkGuess() {
                 userGuess.focus();
         
             }
+        //if the number of guesses exceeds 10 then player loses
         } else {
             winOrLose.textContent = `You lose! The number was ${randomNum}.`;
             userGuess.disabled = true;
