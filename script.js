@@ -15,9 +15,10 @@ function generateNum() {
     userGuess.focus();
 }
 
-//push user's guess to array
-//show all guesses on screen
-function getGuess() {
+
+function checkGuess() {
+    //push user's guess to array
+    //show all guesses on screen
     currentGuess = userGuess.value;
     if(!isNaN(currentGuess) && currentGuess <101 && currentGuess > 0){
         guesses.push(` ${currentGuess}`)
@@ -25,14 +26,11 @@ function getGuess() {
         numGuesses++;
     }
     userGuess.value = '';
-    checkGuess();
-}
 
-//compare user's guess to generated number
-//show on screen whether it was too big, too small, or correct
-//if the number of guesses exceeds 10 then player loses
-//win or lose -> call function which shows reset button
-function checkGuess() {
+    //compare user's guess to generated number
+    //show on screen whether it was too big, too small, or correct
+    //if the number of guesses exceeds 10 then player loses
+    //win or lose -> call function which shows reset button
     if (isNaN(currentGuess) || currentGuess > 100 || currentGuess < 0) {
         winOrLose.textContent = `Please enter a number between 1 and 100.`
         userGuess.focus();
@@ -82,9 +80,9 @@ function resetGame() {
     userGuess.disabled = false;
     guessBut.disabled = false;
     resetBut.style.display = 'none';
+    userGuess.focus();
 }
 
 window.addEventListener('load', generateNum)
-
-guessBut.addEventListener('click', getGuess)
+guessBut.addEventListener('click', checkGuess)
 resetBut.addEventListener('click', resetGame);
