@@ -49,6 +49,11 @@ button:hover {
     opacity: 70%;
 }
 
+button:disabled {
+    opacity: 70%;
+    cursor: default;
+}
+
 .instructions {
     text-align: center;
 }
