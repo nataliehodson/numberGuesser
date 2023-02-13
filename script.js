@@ -1,13 +1,13 @@
-let currentGuess;
-let randomNum;
-let numGuesses= 0;
-let guesses = [];
-
 const userGuess = document.querySelector('.guess');
 const guessContainer = document.querySelector('.guesses');
 const winOrLose = document.querySelector('.winOrLose');
 const guessBut = document.querySelector('.guessBut');
 const resetBut = document.querySelector('.resetBut');
+
+let currentGuess;
+let randomNum;
+let numGuesses= 0;
+let guesses = [];
 
 //generate random number, called on load
 function generateNum() {
@@ -33,7 +33,6 @@ function getGuess() {
 //if the number of guesses exceeds 10 then player loses
 //win or lose -> call function which shows reset button
 function checkGuess() {
-
     if (isNaN(currentGuess) || currentGuess > 100 || currentGuess < 0) {
         winOrLose.textContent = `Please enter a number between 1 and 100.`
         userGuess.focus();

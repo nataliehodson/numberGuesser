@@ -45,6 +45,10 @@ button {
     border: 0;
 }
 
+button:hover {
+    opacity: 70%;
+}
+
 .instructions {
     text-align: center;
 }
